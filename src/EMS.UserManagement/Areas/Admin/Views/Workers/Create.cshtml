@@ -1,0 +1,25 @@
+@model EMS.UserManagement.Areas.Admin.Models.AddWorkerModel
+
+<div class="container-fluid" style="padding-top: 100px">
+    <h1>Create Worker</h1>
+    <div class="row">
+        <form asp-action="Add" method="post" class="form" role="form">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    @Html.EditorFor(x => x.Name, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            placeholder = Html.DisplayNameFor(x => x.Name)
+                        },
+                    })
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Create"/>
+            </div>
+        </form>
+    </div>
+</div>

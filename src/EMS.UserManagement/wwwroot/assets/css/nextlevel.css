@@ -1,0 +1,68 @@
+header {
+    background: #12A677;
+}
+
+section.success {
+    background: #12A677;
+}
+
+span.skills {
+    font-style: italic;
+    font-size: 3em!important;
+}
+
+.navbar-custom .navbar-nav li.active a, .navbar-custom .navbar-nav li.active a:active, .navbar-custom .navbar-nav li.active a:focus, .navbar-custom .navbar-nav li.active a:hover {
+    background: #12A677;
+}
+
+.navbar-custom .navbar-nav li a:focus {
+    color: #12A677!important;
+}
+
+
+.btn-success {
+    background: #12A677!important;
+}
+
+.navbar-custom {
+    background: #12A677!important;
+    font-family: 'Ubuntu','Lato', 'Helvetica Neue', Helvetica, Arial !important;
+    font-size:larger;
+
+}
+
+.text-success {
+    color: #12A677!important;
+}
+
+header .intro-text .name {
+    text-transform: none;
+}
+
+body > .container,
+body > .container-fluid {
+    padding-top: 100px;
+}
+
+.panel-success .panel-heading {
+    background: #12A677!important;
+    color: #fefefe!important;
+    font-size:large;
+}
+
+body {
+    background: #fefefe!important;
+    font-family: 'Ubuntu','Lato', 'Helvetica Neue', Helvetica, Arial !important;
+}
+
+.dropdown-menu li a {
+    color: #12A677!important;
+}
+
+h4 {
+    text-transform: none!important;
+}
+
+.progress-bar-success {
+    background-color: #12A677!important;
+}

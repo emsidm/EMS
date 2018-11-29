@@ -16,21 +16,14 @@ namespace EMS.DataSources.EntityFramework
             _context = context;
         }
 
-
         public IQueryable<TEntity> Entities<TEntity>() where TEntity : class, IEntityBase => _context.Set<TEntity>();
         public string Name { get; set; }
-
 
         public async Task<IProvisioningStatus<TEntity>> ProvisionAsync<TEntity>(TEntity entity)
             where TEntity : class, IEntityBase
         {
-            var dbSet = _context.Set<TEntity>();
-
             if (await _context.Set<TEntity>().AnyAsync(x => x.Id == entity.Id))
-            {
                 return await UpdateEntity(entity);
-            }
-
             return await CreateEntity(entity);
         }
 

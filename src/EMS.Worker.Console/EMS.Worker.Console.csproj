@@ -6,7 +6,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EMS.Worker\EMS.Worker.csproj" />
+        <ProjectReference Include="..\..\EMS.Models\EMS.Models.csproj" />
+        <ProjectReference Include="..\EMS.CachingDbContext\EMS.CachingDbContext.csproj" />
+        <ProjectReference Include="..\EMS.ConfigurationProviders\EMS.ConfigurationProviders.csproj" />
+        <ProjectReference Include="..\EMS.DataSources.EntityFramework\EMS.DataSources.EntityFramework.csproj" />
+        <ProjectReference Include="..\EMS.Worker\EMS.Worker.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.6" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
     </ItemGroup>
 
 </Project>

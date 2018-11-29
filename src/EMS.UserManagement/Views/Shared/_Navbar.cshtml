@@ -1,0 +1,70 @@
+<nav id="mainNav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="clearfix">
+            <div class="col-xs-12">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" asp-action="Index" asp-controller="Home" style="display: inline-block;">
+                        <div style="display: inline-block;">
+                            EMS
+                            <span style="font-size: x-small;">
+                                <span style="white-space: nowrap">Next-level IDM</span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a asp-action="Index" asp-controller="Workers">Workers</a>
+                        </li>
+
+                        <li class="page-scroll">
+                            <a asp-action="Index" asp-controller="Users">Users</a>
+                        </li>
+
+@*                         @if (!User.Identity.IsAuthenticated) *@
+@*                         { *@
+@*                             <li class="page-scroll"> *@
+@*                                 <a asp-action="Index" asp-controller="Home" asp-fragment="join">Join</a> *@
+@*                             </li> *@
+@*                         } *@
+@*                         else *@
+@*                         { *@
+@*                             <li class="dropdown"> *@
+@*                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"> *@
+@*                                     @User.Identity.Name *@
+@*                                     <span class="caret"></span> *@
+@*                                 </a> *@
+@*                                 <ul class="dropdown-menu"> *@
+@*                                     <li> *@
+@*                                         <a asp-action="Index" asp-controller="Home">Profile</a> *@
+@*                                     </li> *@
+@*                                     <li class="divider"></li> *@
+@*                                     <li> *@
+@*                                         <a asp-action="Index" asp-controller="Home">Logout</a> *@
+@*                                     </li> *@
+@*                                 </ul> *@
+@*                             </li> *@
+@*                     <li> *@
+@*                         <a asp-action="Index" asp-controller="Profile">@User.Identity.Name</a> *@
+@*                     </li> *@
+                        @* } *@
+
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,29 @@
+@using EMS.CachingDbContext.Models
+@using Microsoft.AspNetCore.Html
+@model IEnumerable<EMS.CachingDbContext.Models.User>
+
+<ul>
+    @GenerateList(Model)
+</ul>
+
+@functions
+{
+
+    private static IHtmlContent GenerateList(IEnumerable<User> users)
+    {
+        IHtmlContentBuilder builder = new HtmlContentBuilder();
+        foreach (var user in users)
+        {
+            builder.AppendHtml($"<li>{user.FullName}</li>");
+            if (user.Manages != null)
+            {
+                builder.AppendHtml("<ul>");
+                builder.AppendHtml(GenerateList(user.Manages));
+                builder.AppendHtml("</ul");
+            }
+        }
+
+        return builder;
+    }
+
+}

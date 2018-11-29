@@ -1,0 +1,33 @@
+@model IEnumerable<EMS.Models.Configuration.WorkerConfiguration>
+
+<div class="container-fluid">
+    <h1>Workers</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Name</td>
+                <td>API Key</td>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var worker in Model)
+            {
+                <tr>
+                    <td>@worker.WorkerName</td>
+                    <td>@worker.ApiKey</td>
+                    <td><a asp-action="Remove" asp-route-id="@worker.Id" class="btn btn-block btn-danger">Remove</a></td>
+                </tr>
+            }
+                        
+            <tr>
+                <td></td>
+                <td></td>
+                <td><a asp-action="Create" class="btn btn-block btn-success">Create</a></td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+

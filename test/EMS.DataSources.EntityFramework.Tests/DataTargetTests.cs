@@ -26,7 +26,7 @@ namespace EMS.DataSources.EntityFramework.Tests
         }
 
         [Test]
-        public async Task InitialProvisioning_CreatesUser()
+        public void InitialProvisioning_CreatesUser()
         {
             using (var destination =
                 new EfDataContext<DestinationDbContext>(new DestinationDbContext(_dstConnection)) as IDataTarget)
