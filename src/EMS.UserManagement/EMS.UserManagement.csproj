@@ -17,8 +17,8 @@
     <Folder Include="wwwroot\assets\css" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EMS.ConfigurationDbContext\EMS.ConfigurationDbContext.csproj" />
-    <ProjectReference Include="..\..\EMS.Models\EMS.Models.csproj" />
+    <ProjectReference Include="..\EMS.ConfigurationDbContext\EMS.ConfigurationDbContext.csproj" />
+    <ProjectReference Include="..\EMS.Models\EMS.Models.csproj" />
     <ProjectReference Include="..\EMS.CachingDbContext\EMS.CachingDbContext.csproj" />
     <ProjectReference Include="..\EMS.Contracts\EMS.Contracts.csproj" />
     <ProjectReference Include="..\EMS.Worker\EMS.Worker.csproj" />

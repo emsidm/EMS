@@ -1,29 +1,61 @@
-@using EMS.CachingDbContext.Models
-@using Microsoft.AspNetCore.Html
 @model IEnumerable<EMS.CachingDbContext.Models.User>
 
-<ul>
-    @GenerateList(Model)
-</ul>
-
-@functions
-{
-
-    private static IHtmlContent GenerateList(IEnumerable<User> users)
-    {
-        IHtmlContentBuilder builder = new HtmlContentBuilder();
-        foreach (var user in users)
-        {
-            builder.AppendHtml($"<li>{user.FullName}</li>");
-            if (user.Manages != null)
+<div class="container-fluid">
+    <h1>Users</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.FullName)</td>
+                <td>@Html.DisplayNameFor(x => x.EmailAddress)</td>
+                <td>@Html.DisplayNameFor(x => x.PhoneNumber)</td>
+                <td>@Html.DisplayNameFor(x => x.UserName)</td>
+                <td>@Html.DisplayNameFor(x => x.Manager)</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in Model)
             {
-                builder.AppendHtml("<ul>");
-                builder.AppendHtml(GenerateList(user.Manages));
-                builder.AppendHtml("</ul");
+                <tr id="user-@user.Id">
+                    <td>@user.FullName</td>
+                    <td>@user.EmailAddress</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.UserName</td>
+                    @if (user.Manager == null || user.Manager?.Id == Guid.Empty)
+                    {
+                        <td>
+                            N/A
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a href="#user-@user.Manager.Id">@user.Manager.FullName</a>
+                        </td>
+                    }
+                    <td>
+                        <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-block btn-primary">Details</a>
+                    </td>
+                    <td>
+                        <a asp-action="Remove" asp-route-id="@user.Id" class="btn btn-block btn-danger">Remove</a>
+                    </td>
+                </tr>
             }
-        }
 
-        return builder;
-    }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a asp-action="Create" class="btn btn-block btn-success">Create</a>
+                </td>
+            </tr>
+            </tbody>
 
-}
+        </table>
+    </div>
+</div>

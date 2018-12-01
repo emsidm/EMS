@@ -1,6 +1,56 @@
 @model EMS.CachingDbContext.Models.User
 
-@Html.DisplayFor(x => x.FullName)
-@Html.DisplayFor(x => x.UserName)
-@Html.DisplayFor(x => x.EmailAddress)
-@Html.DisplayFor(x => x.PhoneNumber)
+<div class="container-fluid" style="padding-top: 100px">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>User Details - @Model.FullName</h1>
+        </div>
+        <div class="col-md-6 text-right">
+            <h1><a asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-danger">Remove</a></h1>
+        </div>
+        </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.FullName)</th>
+                <td>@Html.DisplayFor(x => x.FullName)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.EmailAddress)</th>
+                <td>@Html.DisplayFor(x => x.EmailAddress)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.PhoneNumber)</th>
+                <td>@Html.DisplayFor(x => x.PhoneNumber)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.UserName)</th>
+                <td>@Html.DisplayFor(x => x.UserName)</td>
+            </tr>
+            @if (Model.Manager != null)
+            {
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Manager)</th>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@Model.Manager.Id">@Model.Manager.FullName</a>
+                    </td>
+                </tr>
+            }
+
+            @if (Model.Manages != null && Model.Manages?.Count != 0)
+            {
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Manages)</th>
+                    <td>
+                        @foreach (var managedUser in Model.Manages)
+                        {
+                            <div>
+                                <a asp-action="Details" asp-route-id="@managedUser.Id">@managedUser.FullName</a>
+                            </div>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

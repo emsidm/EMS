@@ -22,9 +22,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.ConfigurationProviders"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.ConfigurationProviders.Tests", "test\EMS.ConfigurationProviders.Tests\EMS.ConfigurationProviders.Tests.csproj", "{E37B9539-05BD-4B07-BCC2-FC81F412BDC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.ConfigurationDbContext", "EMS.ConfigurationDbContext\EMS.ConfigurationDbContext.csproj", "{E8B002DD-D6EF-4892-996C-9BC6085F4991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.ConfigurationDbContext", "src\EMS.ConfigurationDbContext\EMS.ConfigurationDbContext.csproj", "{E8B002DD-D6EF-4892-996C-9BC6085F4991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Models", "EMS.Models\EMS.Models.csproj", "{A1ECB296-3868-42AE-BEB9-AF1D37F8B5F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Models", "src\EMS.Models\EMS.Models.csproj", "{A1ECB296-3868-42AE-BEB9-AF1D37F8B5F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

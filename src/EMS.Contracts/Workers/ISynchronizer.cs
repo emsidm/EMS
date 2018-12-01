@@ -17,13 +17,13 @@ namespace EMS.Contracts.Workers
         IEnumerable<T> Entities { get; set; }
     }
 
-    public abstract class ReadJob<T> : IJob<T> where T : IEntityBase
+    public class ReadJob<T> : IJob<T> where T : IEntityBase
     {
         public IDataSource Source { get; set; }
         public IEnumerable<T> Entities { get; set; }
     }
 
-    public abstract class WriteJob<T> : IJob<T> where T : IEntityBase
+    public class WriteJob<T> : IJob<T> where T : IEntityBase
     {
         public IDataTarget Target { get; set; }
         public IEnumerable<T> Entities { get; set; }
