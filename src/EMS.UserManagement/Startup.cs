@@ -1,6 +1,7 @@
 using System.Net.Http.Formatting;
 using EMS.CachingDbContext;
 using EMS.ConfigurationDbContext;
+using EMS.DataSources.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,8 @@ namespace EMS.UserManagement
                     options.SerializerSettings.Formatting = Formatting.Indented;
                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 });
+
+            services.AddDataContext<CachingContext>(options => { });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

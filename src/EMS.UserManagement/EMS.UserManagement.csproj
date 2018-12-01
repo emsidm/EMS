@@ -18,6 +18,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EMS.ConfigurationDbContext\EMS.ConfigurationDbContext.csproj" />
+    <ProjectReference Include="..\EMS.DataSources.EntityFramework\EMS.DataSources.EntityFramework.csproj" />
     <ProjectReference Include="..\EMS.Models\EMS.Models.csproj" />
     <ProjectReference Include="..\EMS.CachingDbContext\EMS.CachingDbContext.csproj" />
     <ProjectReference Include="..\EMS.Contracts\EMS.Contracts.csproj" />
