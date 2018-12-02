@@ -36,14 +36,15 @@ namespace EMS.DataSources.EntityFramework
             context.Entry(entity).Metadata.FindPrimaryKey();
 
             return context.Entry(entity).IsKeySet &&
-                   context.Set<TEntity>().Find(
-                       typeof(TEntity).GetProperty(context.FindPrimaryKeyName<TEntity>())?.GetValue(entity)) != null;
+                   context.Set<TEntity>()
+                       .Find(typeof(TEntity)
+                           .GetProperty(context.FindPrimaryKeyName<TEntity>())?.GetValue(entity)) != null;
         }
 
         private static string FindPrimaryKeyName<TEntity>(this DbContext context)
         {
-            return context.Model.FindEntityType(typeof(TEntity)).FindPrimaryKey().Properties.Select(x => x.Name)
-                .Single();
+            return context.Model.FindEntityType(typeof(TEntity)).FindPrimaryKey()
+                .Properties.Select(x => x.Name).Single();
         }
     }
 }

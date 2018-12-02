@@ -6,7 +6,8 @@ namespace EMS.DataSources.EntityFramework.Tests.Contexts
 {
     public class SourceDbContext : DbContext
     {
-        public SourceDbContext(SqliteConnection connection) : this(new DbContextOptionsBuilder<SourceDbContext>()
+        public SourceDbContext(SqliteConnection connection) : this(
+            new DbContextOptionsBuilder<SourceDbContext>()
             .UseSqlite(connection).Options)
         {
         }

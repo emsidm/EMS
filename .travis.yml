@@ -1,0 +1,18 @@
+language: csharp
+solution: EMS.sln
+mono: none
+dotnet: 2.1.302
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - dotnet restore
+        - dotnet build
+        - dotnet test
+
+script:
+  - dotnet restore
+  - dotnet build
+
+

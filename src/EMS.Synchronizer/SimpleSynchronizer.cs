@@ -27,12 +27,12 @@
 ////        {
 ////            WriteWorkers[job.Target].AssignWriteJob(job);
 ////        }
-//        public void AssignReadJob<T>(ReadJob<T> job) where T : IEntityBase
+//        public void AssignReadJob<T>(ReadJob<T> job) where T : class
 //        {
 //            throw new System.NotImplementedException();
 //        }
 //
-//        public void AssignWriteJob<T>(WriteJob<T> job) where T : IEntityBase
+//        public void AssignWriteJob<T>(WriteJob<T> job) where T : class
 //        {
 //            throw new System.NotImplementedException();
 //        }

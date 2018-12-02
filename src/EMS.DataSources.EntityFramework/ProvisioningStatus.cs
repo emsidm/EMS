@@ -7,6 +7,20 @@ namespace EMS.DataSources.EntityFramework
 {
     public class ProvisioningStatus<TEntity> : IProvisioningStatus<TEntity>
     {
+        public ProvisioningStatus(ProvisioningState state, IEnumerable<TEntity> entities, string message = "")
+        {
+            State = state;
+            Entities = entities;
+            Message = message;
+        }
+
+        public ProvisioningStatus(ProvisioningState state, TEntity entity, string message = "")
+        {
+            State = state;
+            Entities = new[] {entity};
+            Message = message;
+        }
+
         [Key] public Guid RequestId { get; set; }
         public ProvisioningState State { get; set; }
         public string Message { get; set; }

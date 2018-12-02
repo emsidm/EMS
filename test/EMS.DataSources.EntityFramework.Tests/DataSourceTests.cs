@@ -67,10 +67,7 @@ namespace EMS.DataSources.EntityFramework.Tests
                 exists = source.Entities<SourceUser>().Any(x => x.EmailAddress == "pesho@pesho.org");
             }
 
-            Assert.Multiple(() =>
-            {
-                Assert.False(exists);
-            });
+            Assert.That(exists, Is.False);
         }
     }
 }
