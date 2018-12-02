@@ -9,13 +9,14 @@ namespace EMS.Worker
 {
     public class Worker : IWorker
     {
-        public void AssignReadJob<TEntity>(ReadJob<TEntity> job) where TEntity : IEntityBase
+        public void AssignReadJob<TEntity>(ReadJob<TEntity> job)
         {
-            ReadJobAssigned?.Invoke(this, job as ReadJob<IEntityBase>);
+            throw new NotImplementedException();
         }
 
-        public void AssignWriteJob<TEntity>(WriteJob<TEntity> job) where TEntity : IEntityBase
+        public void AssignWriteJob<TEntity>(WriteJob<TEntity> job)
         {
+            throw new NotImplementedException();
         }
     }
 }
