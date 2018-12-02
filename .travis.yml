@@ -5,11 +5,11 @@ dotnet: 2.1.302
 
 jobs:
   include:
-    - stage: test
+    - stage: test EF
       script:
         - dotnet restore
         - dotnet build
-        - dotnet test
+        - dotnet test test/EMS.DataSources.EntityFramework.Tests/EMS.DataSources.EntityFramework.Tests.csproj
 
 script:
   - dotnet restore
