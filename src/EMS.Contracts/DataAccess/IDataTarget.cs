@@ -7,13 +7,19 @@ namespace EMS.Contracts.DataAccess
 {
     public interface IDataTarget : IDisposable
     {
-        Task<IProvisioningStatus<TEntity>> ProvisionAsync<TEntity>(TEntity entity) where TEntity : class, IEntityBase;
+        Task<IProvisioningStatus<TEntity>> ProvisionAsync<TEntity>(TEntity entity) where TEntity : class;
 
         Task<IProvisioningStatus<TEntity>> BulkProvisionAsync<TEntity>(IEnumerable<TEntity> entities)
-            where TEntity : class, IEntityBase;
+            where TEntity : class;
+        
+        Task<IProvisioningStatus<TEntity>> DeprovisionAsync<TEntity>(TEntity entity)
+            where TEntity : class;
 
+        Task<IProvisioningStatus<TEntity>> BulkDeprovisionAsync<TEntity>(IEnumerable<TEntity> entities)
+            where TEntity : class;
+        
         Task<IProvisioningStatus<TEntity>> GetProvisioningStatusAsync<TEntity>(TEntity entity)
-            where TEntity : class, IEntityBase;
+            where TEntity : class;
         
         string Name { get; set; }
     }
@@ -29,7 +35,7 @@ namespace EMS.Contracts.DataAccess
     public enum ProvisioningState
     {
         Created,
-        Modified,
+        Updated,
         Unmodified,
         Inexistent,
         Error,

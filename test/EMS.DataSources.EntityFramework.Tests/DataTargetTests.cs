@@ -9,6 +9,7 @@ using NUnit.Framework;
 
 namespace EMS.DataSources.EntityFramework.Tests
 {
+    [TestFixture]
     public class DataTargetTests
     {
         private SqliteConnection _dstConnection;
@@ -74,31 +75,11 @@ namespace EMS.DataSources.EntityFramework.Tests
                     () =>
                     {
                         Assert.That(provisioningStatus.State,
-                            Is.EqualTo(ProvisioningState.Modified));
+                            Is.EqualTo(ProvisioningState.Updated));
                         Assert.That(provisioningStatus.Entities.First().EmailAddress,
                             Is.EqualTo(dstEntity.EmailAddress));
                     }
                 );
-            }
-        }
-
-        [Test]
-        public async Task Unchanged_ReturnsUnmodified()
-        {
-            using (var destination =
-                new EfDataContext<DestinationDbContext>(new DestinationDbContext(_dstConnection)) as IDataTarget)
-            {
-                var dstEntity = new DestinationUser
-                {
-                    EmailAddress = "pesho@pesho.org",
-                    SamAccountName = "pesho"
-                };
-                await destination.ProvisionAsync(dstEntity);
-
-                var changedEntity = dstEntity;
-                var provisioningStatus = await destination.ProvisionAsync(changedEntity);
-
-                Assert.That(provisioningStatus.State, Is.EqualTo(ProvisioningState.Unmodified));
             }
         }
     }

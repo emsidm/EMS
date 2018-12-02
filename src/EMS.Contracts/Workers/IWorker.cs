@@ -6,10 +6,7 @@ namespace EMS.Contracts.Workers
 {
     public interface IWorker
     {
-        void AssignReadJob<TEntity>(ReadJob<TEntity> job) where TEntity : IEntityBase;
-        void AssignWriteJob<TEntity>(WriteJob<TEntity> job) where TEntity : IEntityBase;
-        
-        event EventHandler<ReadJob<IEntityBase>> ReadJobAssigned;
-        event EventHandler<WriteJob<IEntityBase>> WriteJobAssigned;
+        void AssignReadJob<TEntity>(ReadJob<TEntity> job);
+        void AssignWriteJob<TEntity>(WriteJob<TEntity> job);
     }
 }

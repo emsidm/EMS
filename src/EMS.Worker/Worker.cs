@@ -16,10 +16,6 @@ namespace EMS.Worker
 
         public void AssignWriteJob<TEntity>(WriteJob<TEntity> job) where TEntity : IEntityBase
         {
-            WriteJobAssigned?.Invoke(this, job as WriteJob<IEntityBase>);
         }
-
-        public event EventHandler<ReadJob<IEntityBase>> ReadJobAssigned;
-        public event EventHandler<WriteJob<IEntityBase>> WriteJobAssigned;
     }
 }

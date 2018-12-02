@@ -8,22 +8,22 @@ namespace EMS.Contracts.Workers
 {
     public interface ISynchronizer
     {
-        void AssignReadJob<T>(ReadJob<T> job) where T : IEntityBase;
-        void AssignWriteJob<T>(WriteJob<T> job) where T : IEntityBase;
+        void AssignReadJob<T>(ReadJob<T> job);
+        void AssignWriteJob<T>(WriteJob<T> job);
     }
 
-    public interface IJob<T> where T : IEntityBase
+    public interface IJob<T>
     {
         IEnumerable<T> Entities { get; set; }
     }
 
-    public class ReadJob<T> : IJob<T> where T : IEntityBase
+    public class ReadJob<T> : IJob<T>
     {
         public IDataSource Source { get; set; }
         public IEnumerable<T> Entities { get; set; }
     }
 
-    public class WriteJob<T> : IJob<T> where T : IEntityBase
+    public class WriteJob<T> : IJob<T>
     {
         public IDataTarget Target { get; set; }
         public IEnumerable<T> Entities { get; set; }

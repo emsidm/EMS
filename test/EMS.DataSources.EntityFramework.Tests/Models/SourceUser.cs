@@ -4,10 +4,10 @@ using EMS.Contracts.DataAccess;
 
 namespace EMS.DataSources.EntityFramework.Tests.Models
 {
-    public class SourceUser : IEntityBase
+    public class SourceUser
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
         
         [Required]
         public string UserName { get; set; }
@@ -17,8 +17,6 @@ namespace EMS.DataSources.EntityFramework.Tests.Models
         public string EmailAddress { get; set; }
         
         public bool Provisioned { get; set; }
-
-        [NotMapped] public string Id => UserId.ToString();
 
         public override string ToString() => $"{UserName} <{EmailAddress}>";
     }

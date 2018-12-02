@@ -7,9 +7,8 @@ using EMS.Contracts.DataAccess;
 
 namespace EMS.CachingDbContext.Models
 {
-    public class User : IEntityBase
+    public class User
     {
-        string IEntityBase.Id => Id.ToString();
         [Key] public Guid Id { get; set; }
 
         [DisplayName("User Name")]public string UserName { get; set; }

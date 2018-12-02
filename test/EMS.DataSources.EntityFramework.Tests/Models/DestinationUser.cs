@@ -5,9 +5,9 @@ using EMS.Contracts.DataAccess;
 
 namespace EMS.DataSources.EntityFramework.Tests.Models
 {
-    public class DestinationUser : IEntityBase
+    public class DestinationUser
     {
-        [Key] public Guid ObjectGuid { get; set; }
+        [Key] public Guid Id { get; set; }
         
         [Required]
         public string SamAccountName { get; set; }
@@ -15,7 +15,5 @@ namespace EMS.DataSources.EntityFramework.Tests.Models
         [DataType(DataType.EmailAddress)]
         [Required]
         public string EmailAddress { get; set; }
-
-        [NotMapped] public string Id => ObjectGuid.ToString();
     }
 }

@@ -16,35 +16,36 @@ namespace EMS.DataSources.EntityFramework
             _context = context;
         }
 
-        public IQueryable<TEntity> Entities<TEntity>() where TEntity : class, IEntityBase => _context.Set<TEntity>();
+        public IQueryable<TEntity> Entities<TEntity>() where TEntity : class => _context.Set<TEntity>();
         public string Name { get; set; }
 
         public async Task<IProvisioningStatus<TEntity>> ProvisionAsync<TEntity>(TEntity entity)
-            where TEntity : class, IEntityBase
+            where TEntity : class
         {
-            if (await _context.Set<TEntity>().AnyAsync(x => x.Id == entity.Id))
+            if (_context.EntityExists(entity))
+            {
                 return await UpdateEntity(entity);
+            }
+
             return await CreateEntity(entity);
         }
 
         private async Task<IProvisioningStatus<TEntity>> UpdateEntity<TEntity>(TEntity entity)
-            where TEntity : class, IEntityBase
+            where TEntity : class
         {
-            bool modified = false;
             _context.Set<TEntity>().Attach(entity);
-
-            if (_context.Entry(entity).State == EntityState.Modified) modified = true;
-            await _context.SaveChangesAsync();
+            _context.Entry(entity).State = EntityState.Modified;
+            int changedCount = await _context.SaveChangesAsync();
 
             return new ProvisioningStatus<TEntity>
             {
-                State = modified ? ProvisioningState.Modified : ProvisioningState.Unmodified,
+                State = ProvisioningState.Updated,
                 Entities = new[] {entity}
             };
         }
 
         private async Task<ProvisioningStatus<TEntity>> CreateEntity<TEntity>(TEntity entity)
-            where TEntity : class, IEntityBase
+            where TEntity : class
         {
             await _context.Set<TEntity>().AddAsync(entity);
             await _context.SaveChangesAsync();
@@ -57,7 +58,7 @@ namespace EMS.DataSources.EntityFramework
         }
 
         public async Task<IProvisioningStatus<TEntity>> BulkProvisionAsync<TEntity>(IEnumerable<TEntity> entities)
-            where TEntity : class, IEntityBase
+            where TEntity : class
         {
             var entitiesList = entities.ToList();
             try
@@ -82,12 +83,48 @@ namespace EMS.DataSources.EntityFramework
             }
         }
 
-        public async Task<IProvisioningStatus<TEntity>> GetProvisioningStatusAsync<TEntity>(TEntity entity)
-            where TEntity : class, IEntityBase
+        public async Task<IProvisioningStatus<TEntity>> DeprovisionAsync<TEntity>(TEntity entity) where TEntity : class
         {
-            var dbSet = _context.Set<TEntity>();
+            _context.Set<TEntity>().Remove(entity);
+            await _context.SaveChangesAsync();
 
-            if (await dbSet.AnyAsync(x => x.Id == entity.Id))
+            return new ProvisioningStatus<TEntity>
+            {
+                State = ProvisioningState.Deleted,
+                Entities = new[] {entity}
+            };
+        }
+
+        public async Task<IProvisioningStatus<TEntity>> BulkDeprovisionAsync<TEntity>(IEnumerable<TEntity> entities)
+            where TEntity : class
+        {
+            var entitiesList = entities.ToList();
+            try
+            {
+                _context.Set<TEntity>().RemoveRange(entitiesList);
+                await _context.SaveChangesAsync();
+
+                return new ProvisioningStatus<TEntity>
+                {
+                    State = ProvisioningState.Deleted,
+                    Entities = entitiesList,
+                };
+            }
+            catch (Exception e)
+            {
+                return new ProvisioningStatus<TEntity>
+                {
+                    State = ProvisioningState.Error,
+                    Entities = entitiesList,
+                    Message = e.Message
+                };
+            }
+        }
+
+        public async Task<IProvisioningStatus<TEntity>> GetProvisioningStatusAsync<TEntity>(TEntity entity)
+            where TEntity : class
+        {
+            if (_context.EntityExists(entity))
             {
                 return new ProvisioningStatus<TEntity>
                 {
