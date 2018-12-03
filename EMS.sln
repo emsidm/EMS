@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.ConfigurationDbContext"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Models", "src\EMS.Models\EMS.Models.csproj", "{A1ECB296-3868-42AE-BEB9-AF1D37F8B5F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Translator", "src\EMS.Translator\EMS.Translator.csproj", "{63CC4772-E52B-477D-B238-4D1188A146F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Translator.Tests", "test\EMS.Translator.Tests\EMS.Translator.Tests.csproj", "{C97FFA78-C83B-40A4-8E1C-FFB56F425266}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,5 +88,13 @@ Global
 		{A1ECB296-3868-42AE-BEB9-AF1D37F8B5F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1ECB296-3868-42AE-BEB9-AF1D37F8B5F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1ECB296-3868-42AE-BEB9-AF1D37F8B5F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63CC4772-E52B-477D-B238-4D1188A146F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63CC4772-E52B-477D-B238-4D1188A146F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63CC4772-E52B-477D-B238-4D1188A146F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63CC4772-E52B-477D-B238-4D1188A146F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C97FFA78-C83B-40A4-8E1C-FFB56F425266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C97FFA78-C83B-40A4-8E1C-FFB56F425266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C97FFA78-C83B-40A4-8E1C-FFB56F425266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C97FFA78-C83B-40A4-8E1C-FFB56F425266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

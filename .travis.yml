@@ -5,11 +5,16 @@ dotnet: 2.1.302
 
 jobs:
   include:
-    - stage: test EF
+    - stage: test EfDataContext
       script:
         - dotnet restore
         - dotnet build
         - dotnet test test/EMS.DataSources.EntityFramework.Tests/EMS.DataSources.EntityFramework.Tests.csproj
+    - stage: test Translator
+      script:
+      - dotnet restore
+      - dotnet build
+      - dotnet test test/EMS.Translator.Tests/EMS.Translator.Tests.csproj
 
 script:
   - dotnet restore

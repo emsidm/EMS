@@ -22,9 +22,9 @@ namespace EMS.ConfigurationProviders.WebApi
             LoadAsync().GetAwaiter().GetResult();
         }
 
-        private async Task LoadAsync()
+        public async Task LoadAsync(HttpClient httpClient = null)
         {
-            var httpClient = new HttpClient
+            if(httpClient == null) httpClient = new HttpClient
             {
                 BaseAddress = new Uri(_options.BaseUrl)
             };
